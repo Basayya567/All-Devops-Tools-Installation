@@ -5,3 +5,4 @@ ls -l
 pwd
 mvn --version
 git --version
+Java --version
