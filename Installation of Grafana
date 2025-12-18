@@ -1,0 +1,19 @@
+sudo apt update -y
+sudo apt upgrade -y
+sudo apt install -y apt-transport-https software-properties-common wget
+sudo mkdir -p /etc/apt/keyrings
+wget -q -O - https://apt.grafana.com/gpg.key | sudo tee /etc/apt/keyrings/grafana.gpg > /dev/null
+echo "deb [signed-by=/etc/apt/keyrings/grafana.gpg] https://apt.grafana.com stable main" | \
+sudo tee /etc/apt/sources.list.d/grafana.list
+sudo apt update
+sudo apt install grafana -y
+sudo systemctl start grafana-server
+sudo systemctl enable grafana-server
+sudo systemctl status grafana-server
+sudo ufw allow 3000
+sudo ufw reload
+Open browser:
+http://<server-ip>:3000
+Default login (yes, everyone asks):
+Username: admin
+Password: admin
